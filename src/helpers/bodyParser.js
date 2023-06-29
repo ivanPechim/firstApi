@@ -1,5 +1,4 @@
 function bodyParser(request, callback) {
-  console.log("chegou aqu i no bodyParser");
   let body = "";
 
   request.on("data", (chunk) => {
