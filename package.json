@@ -1,0 +1,14 @@
+{
+  "name": "firstapi",
+  "version": "1.0.0",
+  "description": "1° api ensinada no curso do JStack.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js"
+  },
+  "author": "ivanPechim",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
