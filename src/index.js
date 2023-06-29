@@ -17,12 +17,17 @@ const server = http.createServer((request, response) => {
     id = splitEndpoint[1];
   }
 
-  console.log(splitEndpoint);
-
   const route = routes.find((routeObj) => routeObj.endpoint === pathname && routeObj.method === request.method);
   if(route){
     request.query = Object.fromEntries(parsedUrl.searchParams);
     request.params = { id };
+
+    response.send = (statusCode, body) => {
+      response.writeHead(statusCode, {
+        "Content-Type": "text/html"
+      });
+      response.end(JSON.stringify(body));
+    };
 
     route.handler(request, response); 
   }else {
@@ -30,6 +35,7 @@ const server = http.createServer((request, response) => {
       "Content-Type": "text/html"
     });
     response.end(`Cannot ${request.method} ${parsedUrl.pathname}`)
+    
   }
 
 
